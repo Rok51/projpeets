@@ -58,7 +58,7 @@
   <img 
     src="https://scontent.fsac1-1.fna.fbcdn.net/v/t39.30808-6/381439957_256969857318876_3416510670568795314_n.png?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Cy-bx96AdKcQ7kNvgHfbUHn&_nc_zt=23&_nc_ht=scontent.fsac1-1.fna&_nc_gid=APVYjBJzKnDKbKm90-Me_Tc&oh=00_AYAf58ljwm4ibi2-1AZLzzZf1A_Hf44wxU84QT6upYl9-Q&oe=67674145" 
     alt="Profile Picture" 
-    style="width: 12%; border-radius: 30% ;height: auto; display: block; margin: 20px auto; border: 1px solid #ddd;">
+    style="width: 12%; border-radius: 20% ;height: auto; display: block; margin: 20px auto; border: 1px solid #ddd;">
 
   <div class="profile-pic"></div>
   
@@ -100,48 +100,48 @@
     </div>
   
     <!-- Flash Messages for Pop-Up -->
-<!-- Flash Messages for Pop-Up --> 
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    {% for category, message in messages %}
-      {% if category == "success" %}
-        <script>
-          window.onload = function() {
-            alert("{{ message }}"); // Trigger the pop-up alert
-          };
-        </script>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-{% endwith %}
-
-
-  </div>
-  
-  <script>
-    // Optional client-side alert function if delete happens instantly without redirect
-    function postDeleted() {
-      alert("Post Deleted!");
-    }
-  </script>
-  
-    </div>
-  </div>
-  
-  <!-- CHECK IF THIS IS THE PROFILE PAGE OF THE LOGGED IN USER BEFORE RENDERING -->
-  {% if username == current_user.username %}
-  <div id="profile" class="tabcontent">
-    <!-- Display flashed messages -->
+    <!-- Flash Messages for Pop-Up --> 
     {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-        <div class="alert alert-{{ category }}" style="color: green; margin-bottom: 1rem;">
-          {{ message }}
-        </div>
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
+      {% if messages %}
+        {% for category, message in messages %}
+          {% if category == "success" %}
+            <script>
+              window.onload = function() {
+                alert("{{ message }}"); // Trigger the pop-up alert
+              };
+            </script>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+
+  </div>
+    
+    <script>
+      // Optional client-side alert function if delete happens instantly without redirect
+      function postDeleted() {
+        alert("Post Deleted!");
+      }
+    </script>
+    
+      </div>
+    </div>
   
+      <!-- CHECK IF THIS IS THE PROFILE PAGE OF THE LOGGED IN USER BEFORE RENDERING -->
+      {% if username == current_user.username %}
+      <div id="profile" class="tabcontent">
+        <!-- Display flashed messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" style="color: green; margin-bottom: 1rem;">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      
 
     <!-- Display user's personal information here -->
     <form method="POST" action="{{ url_for('profile_page', username=username) }}">
@@ -156,26 +156,26 @@
   </div>
   {% endif %}
 
-  <script>
-    // Function to open tab content
-    function openTab(evt, tabName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+    <script>
+      // Function to open tab content
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
       }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(tabName).style.display = "block";
-      evt.currentTarget.className += " active";
-    }
 
-    // Show the default tab on page load
-    document.getElementsByClassName("tablinks")[0].click();
-  </script>
-  <script src="/static/script.js"></script>
-</body>
+      // Show the default tab on page load
+      document.getElementsByClassName("tablinks")[0].click();
+    </script>
+    <script src="/static/script.js"></script>
+  </body>
 
-</html>
+  </html>

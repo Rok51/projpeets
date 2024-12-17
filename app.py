@@ -29,7 +29,7 @@ import bcrypt
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
-    password_hash = db.Column(LargeBinary, unique=True, nullable=False)  # Changed to LargeBinary
+    password_hash = db.Column(db.LargeBinary, unique=True, nullable=False)  # Changed to LargeBinary
     name = db.Column(db.String, nullable=False)
     is_admin = db.Column(db.Boolean)
 
@@ -44,7 +44,9 @@ class User(UserMixin, db.Model):
         self.password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
     def check_password(self, password):
-        # Compare the provided password with the stored hash
+        # Ensure password_hash is in bytes
+        if isinstance(self.password_hash, str):
+            self.password_hash = self.password_hash.encode('utf-8')
         return bcrypt.checkpw(password.encode('utf-8'), self.password_hash)
 
 class Posts(db.Model):

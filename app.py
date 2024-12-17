@@ -7,8 +7,7 @@ from flask_login import current_user, login_user, login_required, LoginManager, 
 import bcrypt
 from flask import flash
 
-
-from sqlalchemy import inspect
+from sqlalchemy import inspect, TypeDecorator, LargeBinary
 
 app = Flask(__name__)
 
@@ -20,13 +19,26 @@ app.secret_key = 'super secret key'
 app.app_context().push()
 db = SQLAlchemy(app)
 
-from flask_login import UserMixin
-from sqlalchemy import LargeBinary
+# Custom TypeDecorator to ensure consistent byte storage/retrieval
+class BytesType(TypeDecorator):
+    impl = LargeBinary
+
+    def process_bind_param(self, value, dialect):
+        # Ensure value is bytes when saving to the database
+        if isinstance(value, str):
+            return value.encode('utf-8')
+        return value
+
+    def process_result_value(self, value, dialect):
+        # Ensure value is bytes when retrieved from the database
+        if isinstance(value, memoryview):
+            return value.tobytes()
+        return value
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
-    password_hash = db.Column(db.LargeBinary, unique=True, nullable=False)  # Use LargeBinary for password hash
+    password_hash = db.Column(BytesType, unique=True, nullable=False)  # Use custom BytesType
     name = db.Column(db.String, nullable=False)
     is_admin = db.Column(db.Boolean)
 
@@ -41,11 +53,7 @@ class User(UserMixin, db.Model):
         self.password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
     def check_password(self, password):
-    # Ensure password_hash is in bytes before checking
-        if isinstance(self.password_hash, str):
-            self.password_hash = self.password_hash.encode('utf-8')
-        elif isinstance(self.password_hash, memoryview):  # Handle cases where SQLAlchemy uses memoryview
-         self.password_hash = self.password_hash.tobytes()
+        # Directly compare password with stored hash
         return bcrypt.checkpw(password.encode('utf-8'), self.password_hash)
 
 class Posts(db.Model):

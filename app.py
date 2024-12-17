@@ -41,9 +41,11 @@ class User(UserMixin, db.Model):
         self.password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
     def check_password(self, password):
-        # Ensure password_hash is bytes before checking
+    # Ensure password_hash is in bytes before checking
         if isinstance(self.password_hash, str):
             self.password_hash = self.password_hash.encode('utf-8')
+        elif isinstance(self.password_hash, memoryview):  # Handle cases where SQLAlchemy uses memoryview
+         self.password_hash = self.password_hash.tobytes()
         return bcrypt.checkpw(password.encode('utf-8'), self.password_hash)
 
 class Posts(db.Model):

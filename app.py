@@ -12,24 +12,21 @@ from sqlalchemy import inspect
 
 app = Flask(__name__)
 
-
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://u8hf3tngk7lq8:pf4fa23bc3495b770de663d39d42f658753263a693a39976d2e008040fd2c87f6@ccba8a0vn4fb2p.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/daiokr68kqi0jb"
-#app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///example.sqlite"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///example.sqlite"
 
 app.secret_key = 'super secret key'
 app.app_context().push()
 db = SQLAlchemy(app)
 
-
 from flask_login import UserMixin
 from sqlalchemy import LargeBinary
-import bcrypt
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
-    password_hash = db.Column(db.LargeBinary, unique=True, nullable=False)  # Changed to LargeBinary
+    password_hash = db.Column(db.LargeBinary, unique=True, nullable=False)  # Use LargeBinary for password hash
     name = db.Column(db.String, nullable=False)
     is_admin = db.Column(db.Boolean)
 
@@ -38,25 +35,25 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.username
-    
+
     def set_password(self, password):
         # Hash the password and store it as bytes
         self.password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
     def check_password(self, password):
-        # Ensure password_hash is in bytes
+        # Ensure password_hash is bytes before checking
         if isinstance(self.password_hash, str):
             self.password_hash = self.password_hash.encode('utf-8')
         return bcrypt.checkpw(password.encode('utf-8'), self.password_hash)
 
 class Posts(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True, nullable=False)
-    title = db.Column(db.String) 
-    body = db.Column(db.String) 
-    likes = db.Column(db.Integer) 
-    dislikes = db.Column(db.Integer) 
+    title = db.Column(db.String)
+    body = db.Column(db.String)
+    likes = db.Column(db.Integer)
+    dislikes = db.Column(db.Integer)
     comments = db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False) 
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     comment = db.relationship('Comments', backref='posts')
     rating = db.relationship('Ratings', backref='posts')
@@ -71,7 +68,7 @@ class Comments(db.Model):
     body = db.Column(db.String)
     likes = db.Column(db.Integer)
     dislikes = db.Column(db.Integer)
-    
+
     rating = db.relationship('Ratings', backref='post')
 
     def __repr__(self):
@@ -82,7 +79,7 @@ class Ratings(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
-    rating = db.Column(db.Integer) 
+    rating = db.Column(db.Integer)
 
 class Followed(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True, nullable=False)

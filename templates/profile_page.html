@@ -5,15 +5,19 @@
   <title>{{username}}</title>
   <link rel="stylesheet" href="/static/style.css">
   <style>
-    /* Style for circular profile picture */
+    /* Style for the profile picture/logo */
     .profile-pic {
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      background-color: #ccc;
+      width: 300px; /* Adjust to your preferred size */
+      height: auto; /* Maintain aspect ratio */
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtui6WDCbJM4sjKlDLlm3-s-IoovS4F7fRWg&s');
+      background-size: contain; /* Ensure the entire logo is visible */
+      background-repeat: no-repeat;
+      background-position: center;
       margin: 20px auto;
       display: block;
     }
+  </style>
+  
 
     /* Style for tabs */
     .tab {

@@ -8,7 +8,7 @@ function followAuthor(button, reload = null) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      now_following: !following, // Toggle follow status
+      now_following: !following, // Now following/ Not following
     }),
   })
   .then(response => {
@@ -18,7 +18,7 @@ function followAuthor(button, reload = null) {
     return response.json();
   })
   .then(response => {
-    if (response.now_following !== undefined) { // Ensure server returns a valid response
+    if (response.now_following !== undefined) { // Make sure the server is valid
       const followButtons = document.getElementsByClassName('follow_button');
       for (let i = 0; i < followButtons.length; i++) {
         if (followButtons[i].dataset.author === author) {
@@ -33,14 +33,14 @@ function followAuthor(button, reload = null) {
         }
       }
       if (reload) { 
-        location.reload(); // Reload page if 'reload' flag is passed
+        location.reload(); // Reload if reload flag passes
       }
     } else {
       console.error('Invalid response format:', response);
     }
   })
   .catch(error => {
-    console.error('Error:', error); // Log errors for debugging
+    console.error('Error:', error); // Log Errors
     alert('Failed to toggle follow status. Please try again.');
   });
 }

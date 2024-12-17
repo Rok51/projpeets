@@ -60,22 +60,22 @@ body {
     font-size: 40px;
     font-weight: bold;
     text-align: center;
-    color: #ffffff; 
+    color: #8a510b; 
     margin-bottom: 10px;
 }
 
 .header-container {
     display: flex;
-    align-items: center; /* Align items vertically */
-    justify-content: space-between; /* Space between logo and navigation links */
+    align-items: center; 
+    justify-content: space-between; 
     padding: 10px 20px;
-    background-color: #f5e1b9; /* Light cream background */
+    background-color: #f5e1b9; 
 }
 
 .logo {
-    height: 110px; /* Adjust the height of the logo */
+    height: 110px; 
     display: block;
-    transform: translateX(800px); /* Move the logo 20px to the right */
+    transform: translateX(828px); 
 }
 
 
@@ -143,8 +143,8 @@ li:not(#header) a:hover {
 
 .active {
     background-color: #fff;
-    border-bottom: 2px solid #3498db; /* Highlight active link with your accent color */
-    margin-bottom: -1px; /* Adjust for border thickness */
+    border-bottom: 2px solid #3498db; 
+    margin-bottom: -1px; 
 }
 
 #header {
@@ -156,7 +156,7 @@ li:not(#header) a:hover {
     position: absolute;
     top: 14px;
     left: 16px;
-    color: #333; /* Adjusted color for better visibility */
+    color: #333; 
 }
 
 .button {
@@ -321,8 +321,8 @@ form.user_info_form {
 .footer {
     font-family: sans-serif;
     font-size: 1rem;
-    background-color: rgba(255, 255, 255, .8); /* Lightened background color */
-    padding: .5rem 1rem; /* Increased padding */
+    background-color: rgba(255, 255, 255, .8); 
+    padding: .5rem 1rem; 
     margin-top: 5rem;
     text-align: center;
 }
@@ -331,9 +331,9 @@ form.user_info_form {
     margin: 1rem;
     padding: 1rem;
     width: auto;
-    background-color: #fff; /* Adjusted background color */
-    border: 1px solid #ddd; /* Added border */
-    border-radius: 8px; /* Added border-radius */
+    background-color: #fff; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
 }
 
 .new_post label {
@@ -352,16 +352,15 @@ form.user_info_form {
 }
 
 .new_post textarea::placeholder {
-    color: #777; /* Adjusted placeholder color */
+    color: #777; 
 }
 
 .new_post button {
     padding: .5rem;
     font-size: 1rem;
     font-family: sans-serif;
-    background-color: #3498db; /* Adjusted background color */
-    color: #fff; /* Adjusted text color */
-    border: none;
+    background-color: #3498db; 
+    color: #fff; 
     border-radius: 5px;
     cursor: pointer;
 }
@@ -377,10 +376,10 @@ form.user_info_form {
     position: relative;
     margin: 1rem;
     text-align: left;
-    border: 1px solid #ddd; /* Added border */
-    border-radius: 8px; /* Added border-radius */
-    padding: 1rem; /* Added padding */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Added box-shadow */
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 1rem; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
 }
 
 .post a,
@@ -408,10 +407,10 @@ form.user_info_form {
 .comment .comment_footer {
     width: 100%;
     display: flex;
-    background-color: #f2f2f2; /* Light gray background */
-    border: 1px solid #ddd; /* Added border */
-    border-radius: 5px; /* Added border-radius */
-    margin-top: 1rem; /* Adjusted margin */
+    background-color: #f2f2f2; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    margin-top: 1rem; 
 }
 
 .post .post_author,
@@ -420,7 +419,7 @@ form.user_info_form {
     display: inline-block;
     font-size: 1rem;
     padding: .375rem .5rem;
-    background-color: #f2f2f2; /* Light gray background */
+    background-color: #f2f2f2; 
     width: auto;
     flex-grow: 1;
 }
@@ -442,7 +441,7 @@ form.user_info_form {
     text-align: center;
     font-weight: 700;
     margin: 0;
-    background-color: #f2f2f2; /* Light gray background */
+    background-color: #f2f2f2; 
 }
 
 .post .post_upvote,
@@ -457,12 +456,12 @@ form.user_info_form {
 
 .post .post_upvote,
 .comment .comment_upvote {
-    background-color: #2ecc71; /* Light green */
+    background-color: #2ecc71;
 }
 
 .post .post_downvote,
 .comment .comment_downvote {
-    background-color: #e74c3c; /* Light coral */
+    background-color: #e74c3c; 
 }
 
 .likes,
@@ -487,9 +486,9 @@ form.user_info_form {
 }
 
 .new_comment label {
-    background-color: #f2f2f2; /* Light gray background */
-    border: 1px solid #ddd; /* Added border */
-    border-radius: 5px; /* Added border-radius */
+    background-color: #f2f2f2; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
     padding: .5rem .75rem;
 }
 
@@ -509,8 +508,7 @@ form.user_info_form {
     font-size: 1rem;
     width: 8rem;
     margin: 0 .5rem .5rem .5rem;
-    background-color: #3498db; /* Blue */
-    color: #fff;
+    background-color: #3498db; 
     border: none;
     border-radius: 5px;
     cursor: pointer;

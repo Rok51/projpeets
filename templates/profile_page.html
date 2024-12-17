@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{username}}</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    /* Style for circular profile picture */
+    .profile-pic {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      background-color: #ccc;
+      margin: 20px auto;
+      display: block;
+    }
+
+    /* Style for tabs */
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+    /* Style for tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+  </style>
+</head>
+
+<body>
+  {% include 'header.html' %}
+  <header style="padding: 0 1rem;">
+    <h1>{{username}}'s Profile</h1>
+  </header>
+  <div class="profile-pic"></div>
+  
+  <!-- Follow Button -->
+  {% if username != current_user.username %}
+    <button 
+      class="follow_button" 
+      data-author="{{ username }}" 
+      data-following="{% if following %}true{% else %}false{% endif %}" 
+      onclick="followAuthor(this, true)">
+      {% if following %}Following{% else %}Follow{% endif %}
+    </button>
+  {% endif %}
+  
+  <div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'posts')">Posts</button>
+    {% if username == current_user.username %}
+    <button class="tablinks" onclick="openTab(event, 'profile')">Profile</button>
+    {% endif %}
+  </div>
+
+  <div id="posts" class="tabcontent">
+    <h1>{{username}}'s Posts</h1>
+    <div id="posts-container">
+      {{posts|length}} posts found.
+      {% for postInfo in posts %}
+        <div class="post" style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #ddd; border-radius: 5px;">
+          <h2>{{ postInfo.title }}</h2>
+          <p>{{ postInfo.body }}</p>
+          <p>Likes: {{ postInfo.likes }} | Dislikes: {{ postInfo.dislikes }}</p>
+          <!-- Delete Post Button -->
+          <form method="POST" action="{{ url_for('delete_post', postID=postInfo.id) }}" onsubmit="postDeleted()">
+            <button type="submit" style="background-color: #e74c3c; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+              Delete Post
+            </button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  
+    <!-- Flash Messages for Pop-Up -->
+<!-- Flash Messages for Pop-Up --> 
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      {% if category == "success" %}
+        <script>
+          window.onload = function() {
+            alert("{{ message }}"); // Trigger the pop-up alert
+          };
+        </script>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+  </div>
+  
+  <script>
+    // Optional client-side alert function if delete happens instantly without redirect
+    function postDeleted() {
+      alert("Post Deleted!");
+    }
+  </script>
+  
+    </div>
+  </div>
+  
+  <!-- CHECK IF THIS IS THE PROFILE PAGE OF THE LOGGED IN USER BEFORE RENDERING -->
+  {% if username == current_user.username %}
+  <div id="profile" class="tabcontent">
+    <!-- Display flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" style="color: green; margin-bottom: 1rem;">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  
+
+    <!-- Display user's personal information here -->
+    <form method="POST" action="{{ url_for('profile_page', username=username) }}">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="LeBron James"><br><br>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" value="Le.Goat"><br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" value="********"><br><br>
+      <input type="submit" value="Save Changes">
+    </form>
+  </div>
+  {% endif %}
+
+  <script>
+    // Function to open tab content
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    // Show the default tab on page load
+    document.getElementsByClassName("tablinks")[0].click();
+  </script>
+  <script src="/static/script.js"></script>
+</body>
+
+</html>

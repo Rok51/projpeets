@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+    <title>{{postInfo.title}}</title>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <h1 class="big-title">Peet's Coffee(UCM) Review</h1>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    {% include 'post.html' %}
+
+    {% include 'add_comment.html' %}
+
+    {% for commentInfo in comments %} 
+        {% include 'comment.html' %}
+    {% endfor %}
+
+    <script>
+    </script>
+</body>
+
+</html>
+</html>

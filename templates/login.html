@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="static/script.js"></script>
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <h1 class="big-title">Peet's Coffee(UCM) Review</h1>
+
+    <h1 style="text-align:center;">Log in</h1>
+    <div class="register_box">
+        <form action="/login" method="POST" class="user_info_form">
+            <label for="username">
+                Username
+                <input type="text" placeholder="Enter Username" name="username" required="">
+            </label>
+            <label for="password">
+                Password<input type="password" placeholder="Enter Password" name="password" required="">
+            </label>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+
+</html>

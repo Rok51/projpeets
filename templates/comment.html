@@ -1,0 +1,34 @@
+<div class="comment">
+    <script src="{{ url_for('static',filename='script.js') }}"></script>
+    <a href="/users/{{commentInfo.commentor}}" class="comment_author">
+        {{commentInfo.commentor}}
+    </a>
+    <div class="comment_body">
+        {{commentInfo.body}}
+    </div>
+    <div class="comment_footer">
+        <div class="comment_rating">
+            <div class="comment_upvote {{'highlight' if commentInfo.rating == 1}}" data-value="1"
+            data-selected="{{'true' if commentInfo.rating == 1 else 'false'}}" data-id="{{commentInfo.id}}"
+            onclick="rateComment(this);">
+                <button type="button" class="button button1">Like</button>
+                <div class="likes">{{commentInfo.likes}}</div>
+            </div>
+            <div class="comment_downvote {{'highlight' if commentInfo.rating == 2}}" data-value="2"
+            data-selected="{{'true' if commentInfo.rating == 2 else 'false'}}" data-id="{{commentInfo.id}}"
+            onclick="rateComment(this);">
+                <div class="dislikes">{{commentInfo.dislikes}}</div>
+                <button type="button" class="button button2">Dislike</button>
+            </div>
+        </div>
+        <div class="filler"></div>
+        <button class="follow_button" onclick="followAuthor(this);" data-author="{{commentInfo.commentor}}" data-following="{{'true' if commentInfo.following else 'false'}}">
+            {% if commentInfo.following %}
+                Following
+            {% else %} 
+                Follow
+            {% endif %}
+        </button>             
+        <!-- TODO: dynamically change these buttons based on current status -->
+    </div>
+</div>

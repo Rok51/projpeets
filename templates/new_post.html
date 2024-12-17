@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="static/style.css">
+    <title>New Post</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1950/1950715.png">
+</head>
+
+<body>
+    {% include 'header.html' %}
+
+    <h1 style="text-align: center;">Make a new post!</h1>
+    <div class="post_box">
+    <form action="/posts" method="POST" class="new_post">
+        <label for="title">Title<br>
+            <input type="text" placeholder="Enter title" name="title" id="title" required="">
+        </label>
+        <label for="content">Content<br>
+            <textarea placeholder="Enter content" name="body" id="content" required=""></textarea>
+        </label>
+        <button type="submit">Post</button>
+    </form>
+    </div>
+
+    <script src="{{ url_for('static',filename='script.js') }}"></script>
+
+
+</body>
+
+</html>
+</html>

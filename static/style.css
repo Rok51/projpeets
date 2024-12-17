@@ -1,0 +1,525 @@
+html {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Main background Color */
+body {
+    background-color: #F5DEB3; /* Light Cream Brown */
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/* Main Box content formatting */
+.box {
+    text-align: center;
+    background-color: #8B7355; 
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+.box h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.box p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.login {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.login h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.big-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff; 
+    margin-bottom: 10px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Space between logo and navigation links */
+    padding: 10px 20px;
+    background-color: #f5e1b9; /* Light cream background */
+}
+
+.logo {
+    height: 110px; /* Adjust the height of the logo */
+    display: block;
+    transform: translateX(800px); /* Move the logo 20px to the right */
+}
+
+
+.little-title {
+    text-align: center;
+    font-size: 28px;
+    color: #3498db;
+    margin-bottom: 30px;
+}
+
+/* Formatting for index navbar */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 16px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Change the link color to #555 on hover */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 16px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Change the link color to #555 on hover */
+li:not(#header) a:hover {
+    background-color: #f5f5f5;
+}
+
+.active {
+    background-color: #fff;
+    border-bottom: 2px solid #3498db; /* Highlight active link with your accent color */
+    margin-bottom: -1px; /* Adjust for border thickness */
+}
+
+#header {
+    text-align: left;
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    color: #333; /* Adjusted color for better visibility */
+}
+
+.button {
+    transition-duration: 0.4s;
+}
+
+.button1, .button2 {
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.button1 {
+    background-color: #4CAF50;
+    color: #fff;
+    border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+    background-color: #45a049;
+}
+
+.button2 {
+    background-color: #e74c3c;
+    color: #fff;
+    border: 2px solid #e74c3c;
+}
+
+.button2:hover {
+    background-color: #c44133;
+}
+
+
+
+#classTable,
+#postTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 2.5% 5%;
+}
+
+#classTable td,
+#classTable th,
+#postTable td,
+#postTable th {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+#classTable td.blank,
+#classTable th.blank {
+    border: 1px solid #ffffff;
+    padding: 25px;
+}
+
+#classTable th,
+#postTable th {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    text-align: left;
+    background-color: #048eaa;
+    color: white;
+}
+
+.user_bar {
+    font-family: sans-serif;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, .8);
+    padding: 10px 0;
+    text-align: center;
+}
+
+.user_bar form {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+.user_bar button {
+    background: none;
+    padding: 0;
+    border: none;
+    color: #069;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+    vertical-align: baseline;
+    align-items: normal;
+    box-sizing: content-box;
+    height: auto;
+    perspective-origin: 0 0;
+    text-align: start;
+    transform-origin: 0 0;
+    width: auto;
+    -webkit-logical-height: 1em;
+    -webkit-logical-width: auto;
+}
+
+.user_bar button:hover,
+.user_bar a:hover {
+    text-decoration: underline;
+}
+
+.user_bar a {
+    padding: .25rem .5rem;
+    margin: 0;
+    display: inline-block;
+    text-decoration: none;
+    color: #069;
+}
+
+.user_bar button:hover, .user_bar a:hover {
+    text-decoration: underline;
+}
+
+.user_bar a {
+    padding: .25rem .5rem;
+    margin: 0;
+    display: inline-block;
+    text-decoration: none;
+    color: #d534db; /* Adjusted color for better visibility */
+}
+
+.register_box {
+    margin: auto;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, .8); /* Lightened background color */
+    text-align: center;
+}
+
+form.user_info_form {
+    display: block;
+    width: 20rem;
+    margin: auto;
+    text-align: left;
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+.user_info_form label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.user_info_form input {
+    width: 100%;
+    padding: .5rem;
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+.user_info_form button {
+    padding: .5rem;
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+.footer {
+    font-family: sans-serif;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, .8); /* Lightened background color */
+    padding: .5rem 1rem; /* Increased padding */
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.new_post {
+    margin: 1rem;
+    padding: 1rem;
+    width: auto;
+    background-color: #fff; /* Adjusted background color */
+    border: 1px solid #ddd; /* Added border */
+    border-radius: 8px; /* Added border-radius */
+}
+
+.new_post label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.new_post input,
+.new_post textarea {
+    width: 100%;
+    padding: .5rem;
+    font-size: 1rem;
+    font-family: sans-serif;
+    margin-bottom: .5rem;
+}
+
+.new_post textarea::placeholder {
+    color: #777; /* Adjusted placeholder color */
+}
+
+.new_post button {
+    padding: .5rem;
+    font-size: 1rem;
+    font-family: sans-serif;
+    background-color: #3498db; /* Adjusted background color */
+    color: #fff; /* Adjusted text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.post,
+.comment,
+.new_comment,
+.post_box {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 2rem);
+    background-color: #fff;
+    position: relative;
+    margin: 1rem;
+    text-align: left;
+    border: 1px solid #ddd; /* Added border */
+    border-radius: 8px; /* Added border-radius */
+    padding: 1rem; /* Added padding */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Added box-shadow */
+}
+
+.post a,
+.comment a {
+    text-decoration: none;
+}
+
+.post button,
+.comment button {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.post .post_title,
+.new_comment label {
+    display: block;
+    font-size: 1.5rem;
+    padding: .5rem .75rem;
+    background-color: #f2f2f2; /* Light gray background */
+    border: 1px solid #ddd; /* Added border */
+    border-radius: 5px; /* Added border-radius */
+}
+
+.post .post_footer,
+.comment .comment_footer {
+    width: 100%;
+    display: flex;
+    background-color: #f2f2f2; /* Light gray background */
+    border: 1px solid #ddd; /* Added border */
+    border-radius: 5px; /* Added border-radius */
+    margin-top: 1rem; /* Adjusted margin */
+}
+
+.post .post_author,
+.comment .comment_author,
+.filler {
+    display: inline-block;
+    font-size: 1rem;
+    padding: .375rem .5rem;
+    background-color: #f2f2f2; /* Light gray background */
+    width: auto;
+    flex-grow: 1;
+}
+
+.post .post_body,
+.comment .comment_body {
+    padding: 1rem;
+}
+
+.post .post_footer .post_comments {
+    display: inline-block;
+    padding: .375rem .5rem;
+}
+
+.post .post_rating,
+.comment .comment_rating {
+    display: inline-block;
+    width: auto;
+    text-align: center;
+    font-weight: 700;
+    margin: 0;
+    background-color: #f2f2f2; /* Light gray background */
+}
+
+.post .post_upvote,
+.comment .comment_upvote,
+.post .post_downvote,
+.comment .comment_downvote {
+    display: inline-block;
+    padding: .25rem;
+    margin: 0;
+    cursor: pointer;
+}
+
+.post .post_upvote,
+.comment .comment_upvote {
+    background-color: #2ecc71; /* Light green */
+}
+
+.post .post_downvote,
+.comment .comment_downvote {
+    background-color: #e74c3c; /* Light coral */
+}
+
+.likes,
+.dislikes {
+    display: inline-block;
+    margin: 0 .25rem;
+    font-weight: 700;
+}
+
+.likes::before {
+    content: "+";
+}
+
+.dislikes::before {
+    content: "-";
+}
+
+.new_comment,
+.post_box input,
+.post_box textarea {
+    box-sizing: border-box;
+}
+
+.new_comment label {
+    background-color: #f2f2f2; /* Light gray background */
+    border: 1px solid #ddd; /* Added border */
+    border-radius: 5px; /* Added border-radius */
+    padding: .5rem .75rem;
+}
+
+.new_comment textarea {
+    width: calc(100% - 1rem);
+    font-family: sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+    height: 4rem;
+    resize: vertical;
+    margin: .5rem;
+    padding: .5rem;
+}
+
+.new_comment button {
+    padding: .25rem .5rem;
+    font-size: 1rem;
+    width: 8rem;
+    margin: 0 .5rem .5rem .5rem;
+    background-color: #3498db; /* Blue */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.highlight {
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .1);
+}

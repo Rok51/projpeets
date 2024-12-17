@@ -1,4 +1,4 @@
-from flask_app import db, User, Posts, Comments, Ratings
+from app import db, User, Posts, Comments, Ratings
 
 users = [
     User(username="user1", name="Connor", is_admin=False),

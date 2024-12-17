@@ -1,9 +1,9 @@
 from app import db, User, Posts, Comments, Ratings
 
 users = [
-    User(username="user1", name="Connor", is_admin=False),
-    User(username="user2", name="Cameron", is_admin=False),
-    User(username="user3", name="Torrence", is_admin=False),
+    User(username="user1", name="Derozan", is_admin=False),
+    User(username="user2", name="Curry", is_admin=False),
+    User(username="user3", name="MJ", is_admin=False),
     User(username="admin", name="admin", is_admin=True)
 ]
 

@@ -7,14 +7,16 @@
   <style>
     /* Style for the profile picture/logo */
     .profile-pic {
-      width: 300px; /* Adjust to your preferred size */
-      height: auto; /* Maintain aspect ratio */
-      background-image: url('https://scontent.fsac1-1.fna.fbcdn.net/v/t39.30808-6/381439957_256969857318876_3416510670568795314_n.png?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Cy-bx96AdKcQ7kNvgHfbUHn&_nc_zt=23&_nc_ht=scontent.fsac1-1.fna&_nc_gid=APVYjBJzKnDKbKm90-Me_Tc&oh=00_AYAf58ljwm4ibi2-1AZLzzZf1A_Hf44wxU84QT6upYl9-Q&oe=67674145');
-      background-size: contain; /* Ensure the entire logo is visible */
+      width: 150px; /* Adjust the container size */
+      height: 150px; /* Ensure a square shape */
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkQy450Kb2rxhCIsV9x9nUhEMthc4C4IQEIQ&s');
+      background-size: cover; /* Ensures the logo fills the circle */
       background-repeat: no-repeat;
       background-position: center;
-      margin: 20px auto;
+      margin: 20px auto; /* Centers horizontally */
+      border-radius: 50%; /* Makes it circular */
       display: block;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
     }
 
     /* Style for tabs */
@@ -54,12 +56,8 @@
   <header style="padding: 0 1rem;">
     <h1>{{username}}'s Profile</h1>
   </header>
-   <!-- Display the profile picture -->
-  <img 
-    src="https://scontent.fsac1-1.fna.fbcdn.net/v/t39.30808-6/381439957_256969857318876_3416510670568795314_n.png?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Cy-bx96AdKcQ7kNvgHfbUHn&_nc_zt=23&_nc_ht=scontent.fsac1-1.fna&_nc_gid=APVYjBJzKnDKbKm90-Me_Tc&oh=00_AYAf58ljwm4ibi2-1AZLzzZf1A_Hf44wxU84QT6upYl9-Q&oe=67674145" 
-    alt="Profile Picture" 
-    style="width: 12%; border-radius: 20% ;height: auto; display: block; margin: 20px auto; border: 1px solid #ddd;">
-
+  
+  <!-- Display the profile picture -->
   <div class="profile-pic"></div>
   
   <!-- Follow Button -->
@@ -100,7 +98,6 @@
     </div>
   
     <!-- Flash Messages for Pop-Up -->
-    <!-- Flash Messages for Pop-Up --> 
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for category, message in messages %}
@@ -114,8 +111,6 @@
         {% endfor %}
       {% endif %}
     {% endwith %}
-
-
   </div>
     
     <script>
@@ -124,11 +119,7 @@
         alert("Post Deleted!");
       }
     </script>
-    
-      </div>
-    </div>
   
-      <!-- CHECK IF THIS IS THE PROFILE PAGE OF THE LOGGED IN USER BEFORE RENDERING -->
       {% if username == current_user.username %}
       <div id="profile" class="tabcontent">
         <!-- Display flashed messages -->
@@ -142,7 +133,6 @@
         {% endif %}
       {% endwith %}
       
-
     <!-- Display user's personal information here -->
     <form method="POST" action="{{ url_for('profile_page', username=username) }}">
       <label for="name">Name:</label>
@@ -178,4 +168,4 @@
     <script src="/static/script.js"></script>
   </body>
 
-  </html>
+</html>

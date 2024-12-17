@@ -12,8 +12,9 @@ from sqlalchemy import inspect, TypeDecorator, LargeBinary
 app = Flask(__name__)
 
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://u8hf3tngk7lq8:pf4fa23bc3495b770de663d39d42f658753263a693a39976d2e008040fd2c87f6@ccba8a0vn4fb2p.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/daiokr68kqi0jb"
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///example.sqlite"
+#app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://u8hf3tngk7lq8:pf4fa23bc3495b770de663d39d42f658753263a693a39976d2e008040fd2c87f6@ccba8a0vn4fb2p.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/daiokr68kqi0jb"
+#app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///example.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "user/Ro5/files/home/Ro5/projpeets/instance/example.sqlite"
 
 app.secret_key = 'super secret key'
 app.app_context().push()

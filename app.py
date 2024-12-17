@@ -22,10 +22,14 @@ app.app_context().push()
 db = SQLAlchemy(app)
 
 
+from flask_login import UserMixin
+from sqlalchemy import LargeBinary
+import bcrypt
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
-    password_hash = db.Column(db.String, unique=True, nullable=False) 
+    password_hash = db.Column(LargeBinary, unique=True, nullable=False)  # Changed to LargeBinary
     name = db.Column(db.String, nullable=False)
     is_admin = db.Column(db.Boolean)
 
@@ -36,9 +40,11 @@ class User(UserMixin, db.Model):
         return '<User %r>' % self.username
     
     def set_password(self, password):
+        # Hash the password and store it as bytes
         self.password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
     def check_password(self, password):
+        # Compare the provided password with the stored hash
         return bcrypt.checkpw(password.encode('utf-8'), self.password_hash)
 
 class Posts(db.Model):
